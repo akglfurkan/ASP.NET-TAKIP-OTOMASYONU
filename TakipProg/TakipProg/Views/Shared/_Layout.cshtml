@@ -1,0 +1,196 @@
+﻿
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+    <title>Takip Programı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <style>
+ 
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav{
+
+}
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+    </style>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+</head>
+<body translate="no">
+    <div id="viewport">
+
+        <div id="sidebar">
+            <header>
+                <a href="/home/index">Takip Programı</a>
+            </header>
+            <ul class="nav">
+                <li>
+                    <a href="/home/index">
+                        <i class="zmdi zmdi-view-dashboard"></i> Anasayfa
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/home/calismasaatiekle">
+                        <i class="zmdi zmdi-calendar"></i> Çalışma Ekle
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/home/calismalar">
+                        <i class="zmdi zmdi-widgets"></i> Çalışmalar
+                    </a>
+                </li>
+                <!--
+    <li>
+        <a href="#">
+            <i class="zmdi zmdi-settings"></i> Services
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="zmdi zmdi-info-outline"></i> About
+        </a>
+    </li>
+    <li>
+
+        <a href="#">
+            <i class="zmdi zmdi-comment-more"></i> Contact
+        </a>
+    </li>
+    <li>
+
+        <a href="#">
+            <i class="zmdi zmdi-link"></i> Shortcuts
+        </a>
+    </li>
+        -->
+            </ul>
+        </div>
+
+        <div id="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-notifications text-danger"></i>
+                            </a>
+                        </li>
+                        <li><a href="#"> @if (User.Identity.IsAuthenticated)
+                            {
+                                @User.Identity.Name
+                            }</a></li>
+                        <li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+                                <a href="/Account/Logout" class="btn btn-danger">Logout</a>
+                            }
+                                            </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+
+                
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

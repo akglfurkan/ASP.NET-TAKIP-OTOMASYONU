@@ -1,0 +1,38 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TakipProg.Models
+@model IPagedList<Model2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Gün</th>
+            <th scope="col">Başlanan Mekik</th>
+            <th scope="col">Bitiş Mekik</th>
+            <th scope="col">Mekik</th>
+            <th scope="col">Not</th>
+            <th scope="col">Çalışılan Makina</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.Gün</td>
+                <td>@item.BaslananMekik</td>
+                <td>@item.BitisMekik</td>
+                <td>@item.Mekik</td>
+                <td>@item.Not</td>
+                <td>@item.Makina</td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Calismalar", "Home", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvListe" }))
+
+
